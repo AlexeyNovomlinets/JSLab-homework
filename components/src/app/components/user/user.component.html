@@ -1,0 +1,11 @@
+<span>ID: {{ user.getId() }}</span>
+<p>First Name: {{ user.firstName }}</p>
+<p>Second Name: {{ user.secondName }}</p>
+
+<ol *ngIf="user.taskList">
+  <li *ngFor="let task of user.taskList"
+    class="notDone"
+    [class.isDone]="task.isDone">
+    <app-task [task] = "task"></app-task>
+  </li>
+</ol>
