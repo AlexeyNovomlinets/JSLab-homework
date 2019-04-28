@@ -1,0 +1,13 @@
+<div class="card" style="width: 26rem;">
+  <ng-template *ngIf="checkDate()" appBorder></ng-template>
+  <img class="card-img-top"
+    src="{{ item.snippet.thumbnails.medium.url }}"
+    alt="{{ item.snippet.title }}"
+    (click)="showMore()">
+  <div class="card-body">
+    <h5 class="card-title">{{ item.snippet.title }}</h5>
+    <p class="card-text">{{ item.snippet.description }}</p>
+    <a href="https://www.youtube.com/watch?v={{ item.id.videoId }}"
+      class="btn btn-info btn-sm">Watch on Youtube</a>
+  </div>
+</div>

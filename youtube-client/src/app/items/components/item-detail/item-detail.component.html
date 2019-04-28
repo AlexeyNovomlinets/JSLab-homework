@@ -1,0 +1,23 @@
+<div *ngFor="let item of items.__zone_symbol__value.items">
+  <div class="card text-center">
+    <div class="card-header">
+      <iframe width="480" height="360" frameborder="0"
+        webkitallowfullscreen mozallowfullscreen allowfullscreen
+        [src]='getURL()'>
+      </iframe>
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">{{ item.snippet.title }}</h3>
+      <h4 class="card-title">{{ item.snippet.channelTitle }}</h4>
+      <div class="card-tags">
+        <span *ngFor="let tag of item.snippet.tags">
+          {{ tag }}
+        </span>
+      </div>
+      <p class="card-text">{{ item.snippet.description }}</p>
+    </div>
+    <div class="card-footer text-muted">
+        {{ item.snippet.publishedAt | date: 'MMM d, y, h:mm:ss a' }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+:host {
+  margin: 20px;
+}
+
+.card {
+  padding: 10px;
+  border: 1px solid #5bc0de;
+  border-radius: 10px;
+}
+
+.card img {
+  width: 240px;
+  cursor: pointer;
+}
+.card h5 {
+  height: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.card p {
+  height: 80px;
+  text-align: justify;
+  overflow: hidden;
+}
+
+.card a {
+  display: block;
+}

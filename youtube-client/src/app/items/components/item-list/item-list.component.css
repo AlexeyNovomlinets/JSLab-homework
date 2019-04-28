@@ -1,0 +1,27 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav input {
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+}
+
+nav button {
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+}
+
+nav button:focus {
+  outline: none;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
