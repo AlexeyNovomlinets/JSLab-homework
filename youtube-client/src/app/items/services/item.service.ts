@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { ItemsServicesModule } from '../items-services.module';
 
 @Injectable({
@@ -16,20 +17,18 @@ export class ItemService {
     private http: HttpClient
   ) {}
 
-  getItems() {
-    return this.http
-      .get(this.itemsUrl)
-      .toPromise()
-      .then(res => res)
-      .catch(this.handleError);
+  getItems(): Observable<any> {
+    return this.http.get(this.itemsUrl)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  getItem(id: string) {
-    return this.http
-    .get(`${this.itemUrl}&id=${id}`)
-    .toPromise()
-    .then(res => res)
-    .catch(this.handleError);
+  getItem(id: string): Observable<any> {
+    return this.http.get(`${this.itemUrl}&id=${id}`)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   private handleError(err: HttpErrorResponse) {

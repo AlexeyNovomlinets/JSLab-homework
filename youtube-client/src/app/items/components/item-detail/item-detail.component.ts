@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemService } from '../../services/item.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-item-detail',
   templateUrl: './item-detail.component.html',
   styleUrls: ['./item-detail.component.css']
 })
-export class ItemDetailComponent implements OnInit {
-  items: any;
+export class ItemDetailComponent implements OnInit, OnDestroy {
   id: string;
+
+  sub: Subscription;
+  item: Observable<any>;
 
   constructor(
     private itemService: ItemService,
@@ -20,7 +23,14 @@ export class ItemDetailComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('itemID');
-    this.items = this.itemService.getItem(this.id);
+    this.sub = this.itemService.getItem(this.id)
+      .subscribe(
+        data => this.item = data.items[0]
+      );
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   getURL() {

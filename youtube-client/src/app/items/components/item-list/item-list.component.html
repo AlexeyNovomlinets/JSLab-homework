@@ -1,12 +1,12 @@
 <nav class="navbar navbar-light bg-light">
   <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+    <input class="form-control mr-sm-2" type="search" placeholder="Search by results" aria-label="Search"
     (ngModelChange)="resetFilter()" [(ngModel)]="qName" [ngModelOptions]="{standalone: true}">
     <button class="btn btn-info my-2 my-sm-0" type="submit" (click)="applyFilter()">Search</button>
   </form>
 </nav>
 
 <div class="wrapper">
-  <app-item *ngFor="let item of (items.__zone_symbol__value.items | filterasd:qName:apply)" [item]="item">
+  <app-item *ngFor="let item of items | filter:qName:apply" [item]="item">
   </app-item>
 </div>
